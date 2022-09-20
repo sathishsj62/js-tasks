@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <style>
+        .problem {
+            max-width: 200px;
+            border: 2px solid;
+            padding: 10px;
+            border-radius: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div>
+        <label for="">operation </label>
+        <select name="" id="operation">
+            <option value="add">Add</option>
+            <option value="sub">Sub</option>
+            <option value="multi">Multiplay</option>
+            <option value="divide">Divide</option>
+        </select>
+    </div>
+    <div>
+        <label for="">Range </label>
+        <select name="" id="operation">
+            <option value="9">1 to 9</option>
+            <option value="19">1 to 19</option>
+            <option value="29">1 to 29</option>
+            <option value="39">1 to 39</option>
+            <option value="49">1 to 49</option>
+            <option value="99">1 to 99</option>
+        </select>
+    </div>
+    <div>
+        <button id="start">start</button>
+    </div>
+    <div class="problems">
+        <div class="problem">
+            <h3>10</h3>
+            <h3>+</h3>
+            <h3>20</h3>
+            
+            <hr>
+            <input type="text">
+            <hr>
+        </div>
+
+    </div>
+    <script>
+        var startEle = document.getElementById("start");
+        var problemsEle = document.getElementsByClassName("problems")[0];
+
+
+        function generrateRandomNumber(max) {
+            return parseInt(Math.random() * max);
+
+
+        }
+
+        function updateproblem(number1, number2, operation){
+
+        }
+
+
+
+
+        var stage1Operation = function () {
+            var operationEle = document.getElementById('operation'),
+                rangeEle = document.getElementById('range'),
+                operation = operationEle.value,
+                range = parseInt(rangeEle.value),
+                randomNumber1, randomNumber2;
+            console.log(operation, range);
+
+
+            //create 8 problem
+            if (operation !== "divide") {
+                for (let i = 1; i <= 16; i++) {
+                    //random no 1
+                    randomNumber1 = generrateRandomNumber(range);
+                    //random no 2
+                    randomNumber2 = generrateRandomNumber(range);
+
+                    console.log(randomNumber1, randomNumber2, operation);
+
+
+
+                }
+            }
+
+        }
+
+        startEle.addEventListener('click', stage1Operation);
+    </script>
+</body>
+
+</html>
