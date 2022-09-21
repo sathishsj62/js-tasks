@@ -30,7 +30,7 @@
     </div>
     <div>
         <label for="">Range </label>
-        <select name="" id="operation">
+        <select name="" id="range">
             <option value="9">1 to 9</option>
             <option value="19">1 to 19</option>
             <option value="29">1 to 29</option>
@@ -49,7 +49,7 @@
             <h3>20</h3>
             
             <hr>
-            <input type="text">
+            <input type="text" class="answer">
             <hr>
         </div>
 
@@ -59,13 +59,55 @@
         var problemsEle = document.getElementsByClassName("problems")[0];
 
 
-        function generrateRandomNumber(max) {
+        function generateRandomNumber(max) {
             return parseInt(Math.random() * max);
 
-
+        }
+        function textTosymbol(text){
+            switch(text){
+                case "add":
+                    return "+"
+                case "sub":
+                    return "-"
+                case "multiplay":
+                    return "*"
+                default:
+                    return "/"
+            }
         }
 
         function updateproblem(number1, number2, operation){
+            //create problem section
+            let problemEle = document.createElement("div");
+            problemEle  = setAttribute("class","problem");
+            //create h3 for number1
+            let number1Ele = document.createElement("h3");
+            //update value of number1
+            number1Ele.innerText = number1
+            //create h3 for operation
+            let operationEle = document.createElement("h3");
+            operationEle.innerText = textTosymbol(operation);
+            //update symbol of operation
+            //create h3 for number2
+            let number2Ele = document.createElement("h3");
+            //update value of number2
+            number2Ele.innerText = number2
+
+            // todo create hr
+            //create input
+            let inputEle = document.createElement("input");
+
+            //update input class name
+            inputEle.setAttribute("class","answer");
+            inputEle.setAttribute("type","text");
+            //update input text 
+            //Append h3, hr input insiad problems
+            problemEle .append(number1)
+            problemEle .append(operationEle)
+            problemEle .append(number2Ele)
+            problemEle .append(inputEle)
+            //Append problem inside problems
+            problemsEle.append(problemsEle);
 
         }
 
@@ -78,18 +120,18 @@
                 operation = operationEle.value,
                 range = parseInt(rangeEle.value),
                 randomNumber1, randomNumber2;
-            console.log(operation, range);
+            // console.log(operation, range);
 
 
             //create 8 problem
             if (operation !== "divide") {
                 for (let i = 1; i <= 16; i++) {
                     //random no 1
-                    randomNumber1 = generrateRandomNumber(range);
+                    randomNumber1 = generateRandomNumber(range);
                     //random no 2
-                    randomNumber2 = generrateRandomNumber(range);
+                    randomNumber2 = generateRandomNumber(range);
 
-                    console.log(randomNumber1, randomNumber2, operation);
+                    updateproblem(randomNumber1, randomNumber2, operation);
 
 
 
